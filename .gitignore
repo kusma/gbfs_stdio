@@ -1,0 +1,7 @@
+*.d
+*.o
+*.gba
+*.bin
+*.elf
+*.gbfs
+*.map
