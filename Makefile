@@ -4,6 +4,7 @@ endif
 
 DEVKITARM = $(DEVKITPRO)/devkitARM
 LIBGBA    = $(DEVKITPRO)/libgba
+export PATH := $(DEVKITARM)/bin:$(PATH)
 
 PREFIX ?= arm-eabi-
 CC      = $(PREFIX)gcc
