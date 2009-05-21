@@ -64,7 +64,7 @@ static const char *make_absolute_path(const char *path)
 	return path;
 }
 
-static int gbfs_open_r(struct _reent *r, void *fileStruct, const char *path,int flags,int mode)
+static int gbfs_open_r(struct _reent *r, void *fileStruct, const char *path, int flags,int mode)
 {
 	struct file_state *file = (struct file_state *)fileStruct;
 
@@ -179,13 +179,13 @@ static void gbfs_stat_file(struct file_state *file, struct stat *st)
 }
 
 
-static int gbfs_fstat_r (struct _reent *r, int fd, struct stat *st)
+static int gbfs_fstat_r(struct _reent *r, int fd, struct stat *st)
 {
 	struct file_state *file = (struct file_state *)fd;
 	gbfs_stat_file(file, st);
 }
 
-static int gbfs_stat_r (struct _reent *r, const char *path, struct stat *st)
+static int gbfs_stat_r(struct _reent *r, const char *path, struct stat *st)
 {
 	struct file_state file;
 
@@ -206,7 +206,7 @@ static int gbfs_stat_r (struct _reent *r, const char *path, struct stat *st)
 	return 0;
 }
 
-static int gbfs_chdir_r (struct _reent *r, const char *path)
+static int gbfs_chdir_r(struct _reent *r, const char *path)
 {
 	/* skip file system identifier, we only support one anyway */
 	path = make_absolute_path(path);
@@ -247,7 +247,7 @@ static DIR_ITER* gbfs_diropen_r(struct _reent *r, DIR_ITER *dirState, const char
 	return (DIR_ITER*)dir;
 }
 
-static int gbfs_dirreset_r (struct _reent *r, DIR_ITER *dirState)
+static int gbfs_dirreset_r(struct _reent *r, DIR_ITER *dirState)
 {
 	struct dir_state* dir = (struct dir_state*)dirState->dirStruct;
 
@@ -257,7 +257,7 @@ static int gbfs_dirreset_r (struct _reent *r, DIR_ITER *dirState)
 	return 0;
 }
 
-static int gbfs_dirnext_r (struct _reent *r, DIR_ITER *dirState, char *filename, struct stat *filestat)
+static int gbfs_dirnext_r(struct _reent *r, DIR_ITER *dirState, char *filename, struct stat *filestat)
 {
 	struct file_state file;
 	struct dir_state* dir = (struct dir_state*)dirState->dirStruct;
