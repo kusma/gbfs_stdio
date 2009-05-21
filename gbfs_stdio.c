@@ -97,7 +97,7 @@ static int gbfs_close_r(struct _reent *r, int fd)
 	return 0;
 }
 
-static int gbfs_seek_r(struct _reent *r, int fd, int pos, int dir)
+static off_t gbfs_seek_r(struct _reent *r, int fd, off_t pos, int dir)
 {
 	int position;
 	struct file_state *file = (struct file_state *)fd;
@@ -134,7 +134,7 @@ static int gbfs_seek_r(struct _reent *r, int fd, int pos, int dir)
 	return file->pos;
 }
 
-static int gbfs_read_r(struct _reent *r,int fd,char *ptr,int len)
+static ssize_t gbfs_read_r(struct _reent *r, int fd, char *ptr, size_t len)
 {
 	int i;
 	struct file_state *file = (struct file_state *)fd;
